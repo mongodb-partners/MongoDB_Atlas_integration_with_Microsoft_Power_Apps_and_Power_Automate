@@ -412,7 +412,7 @@
 
 
 
-For any queries, Please contact partners@mongodb.com
+For any queries, Please contact partners-presales@mongodb.com
 
 
 
