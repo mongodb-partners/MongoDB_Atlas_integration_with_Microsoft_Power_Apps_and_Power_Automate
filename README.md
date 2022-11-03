@@ -56,7 +56,7 @@
 
 ## Create a Blob Storage
 
-  - You can follow the steps provided in [Microsoft Link](https://azure.microsoft.com/en-in/free/).
+  - You can follow the steps provided in [Microsoft Link](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal).
   - Create 2 containers "documents" and "filestoprocess"
      - documents -> When the user clicks on Upload and uploads a file, it is stored here. This does not trigger the Power Automate Flow
      - filestoprocess -> When the user clicks on Submit, file is copied from documents to filestoprocess container and this in-turn will trigger the Power Automate Flow
