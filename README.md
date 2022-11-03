@@ -74,7 +74,7 @@
   - Toggle the “Swagger Editor” button which will show the swagger code for the connector. Replace the swagger file content with the MongoDBDataAPI.swagger.
       
    - Update the connector.
-   - Go to Test Tab → New Connection. Enter the private API Key created in Generate an API key step.
+   - Go to Test Tab → New Connection. Enter the private API Key created in [Generate an API key](#generate-an-api-key) step.
    
  <img width="400" alt="testTab" src="https://user-images.githubusercontent.com/101181433/185431420-4ee47fbf-193d-40dd-8401-cfbe8e9ef61e.png">
 
