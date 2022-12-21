@@ -9,7 +9,7 @@ info:
   contact: {name: MongoDB Support, url: 'https://support.mongodbiik.com/?_ga=2.110703109.1437946763.1654450495-497797817.1652506595',
     email: support-operations@mongodb.com}
 host: data.mongodb-api.com
-basePath: /app/data-qdcie/endpoint/data/v1/
+basePath: /app/<DATA API APP ID>/endpoint/data/v1/
 schemes: [https]
 consumes: [application/json]
 produces: [application/json]
