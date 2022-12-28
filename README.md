@@ -37,14 +37,14 @@
   - Log-on to Atlas account.
   
   - In the project's Security tab, choose to add a new user called main_user, for this user select Add Default Privileges and in the Default Privileges section add the roles readWriteAnyDatabase.
-  - Create a Sandbox Cluster in a cloud provider region of your choice with default settings.
+  - Create a Sandbox Cluster in a cloud provider region of your choice with default settings. Name the cluster as Sandbox for this setup as it will be used later in PowerApps/PowerAutomate code.
   - In the Security tab, add a new IP Whitelist for your laptop's current IP address
 ### B: Enable the Data API in Atlas
   - In the left-hand Deployment menu, click to navigate to Data API.
 
   - Slide the Data API Enabled toggle to ON for the cluster you're using for this PoV. Select Enable when prompted and wait for the deployment to complete:
-
-   <img width="600" alt="DataAPI" src="https://user-images.githubusercontent.com/101181433/185349961-ac6fb7eb-c78e-4bda-b6ba-3d10adfb6ac6.png">
+   
+   <img width="600" alt="data api app id" src="https://user-images.githubusercontent.com/101181433/209844947-db763bdf-e7e5-43ac-a9b2-948a325f7d17.png">
 
   - Copy your Data API App ID from the URL Endpoint as you will need it for Postman. In the above screenshot, data-qdcie is my App ID.
 ### C: Generate an API key
@@ -167,10 +167,9 @@
             - Click on Insert → Button. Edit the text to “Save”.
             - Click on the Button created→ choose OnSelect Option → Add this function: 
             
-                     MongoDB.InsertDocument("Content-Type","Access-Control-Request-headers","api-key",
-                     {dataSource:"Sandbox",database:"XYZBank",collection:"onboarding",document{firstname:Upper(Fname.Text),
-                     lastname:Upper(Lname.Text),DateOfBirth:DOB.Text,passportNumber:Passport.Text,_id:Passport.Text,
-                     emailId:email.Text,applicationNumber:ApplNoLabel}});
+                     MongoDB.InsertDocument("Sandbox","XYZBank","onboarding",{document:
+                     {firstname:Upper(Fname.Text),lastname:Upper(Lname.Text),DateOfBirth:DOB.Text,
+                     passportNumber:Passport.Text,_id:Passport.Text,emailId:email.Text,applicationNumber:ApplNoLabel}});
                      
                      Navigate('Save success',ScreenTransition.Fade,{returnAppNumber:ApplNoLabel});
 
@@ -188,10 +187,9 @@
                     
                     AzureBlobStorage.DeleteFileV2("csg10032001f02ad0eb",_deleteFile);
 
-                    MongoDB.InsertDocument("Content-Type","Access-Control-Request-headers","api-key",      
-                    {dataSource:"Sandbox",database:"XYZBank",collection:"onboarding",document:
-                    {firstname:Upper(Fname.Text),lastname:Upper(Lname.Text),DateOfBirth:DOB.Text,passportNumber:Passport.Text,
-                    _id:Passport.Text,emailId:email.Text,applicationNumber:ApplNoLabel.Text}});
+                    MongoDB.InsertDocument("Sandbox","XYZBank","onboarding",{document:
+                    {firstname:Upper(Fname.Text),lastname:Upper(Lname.Text),DateOfBirth:DOB.Text,
+                    passportNumber:Passport.Text,_id:Passport.Text,emailId:email.Text,applicationNumber:ApplNoLabel.Text}});
 
                     Navigate(Success,ScreenTransition.Fade,{returnAppNumber:ApplNoLabel});
                     );
@@ -257,9 +255,8 @@
                   
                   If(Or(IsBlank(ApplNoEntered.Text),!IsNumeric(ApplNoEntered.Text)),Set(popup,true),
 
-                  UpdateContext({varFormData:MongoDB.FindDocument("Content-Type","Access-Control-Request-headers","api-key",
-                  "Accept",{dataSource:"Sandbox",database:"XYZBank",collection:"onboarding",
-                  filter:{_id:Blank(),applicationNumber:ApplNoEntered.Text}})});
+                  UpdateContext({varFormData:MongoDB.FindDocument("Sandbox","XYZBank","onboarding",
+                  {filter:{_id:Blank(),applicationNumber:ApplNoEntered.Text}})});
 
 
                   If(IsBlank(varFormData.document.applicationNumber), 
@@ -290,11 +287,9 @@
                   
      - Click on the Save Button created→ choose OnSelect Option → Add this function:
            
-                  MongoDB.UpdateDocument("Content-Type","Access-Control-Request-headers","api-key",
-                  {dataSource:"Sandbox",database:"XYZBank",collection:"onboarding",filter:
-                  {applicationNumber:ApplNoLabel_1.Text,passportNumber:Blank()},update:{'$set':
-                  {firstname:Upper(Fname_1.Text),lastname:Upper(Lname_1.Text),DateOfBirth:DOB_1.Text,
-                  passportNumber:Passport_1.Text,emailId:email_1.Text,status:Blank()}}});
+                  MongoDB.UpdateDocument("Sandbox","XYZBank","onboarding",{filter:{applicationNumber:ApplNoLabel_1.Text,
+                  passportNumber:Blank()},update:{'$set':{firstname:Upper(Fname_1.Text),lastname:Upper(Lname_1.Text),
+                  DateOfBirth:DOB_1.Text,passportNumber:Passport_1.Text,emailId:email_1.Text,status:Blank()}}});
 
                   Navigate('Save success',ScreenTransition.Fade,{returnAppNumber:ApplNoLabel_1});
 
@@ -309,10 +304,9 @@
                   AzureBlobStorage.CopyFile(Concatenate("documents/",Passport_1.Text,".pdf"),Concatenate("filestoprocess/",Passport_1.Text,".pdf"));
                   AzureBlobStorage.DeleteFileV2("csg10032001f02ad0eb",_deleteFile);
 
-                  MongoDB.UpdateDocument("Content-Type","Access-Control-Request-headers","api-key",{dataSource:"Sandbox",
-                  database:"XYZBank",collection:"onboarding",filter:{applicationNumber:ApplNoLabel_1.Text,
-                  passportNumber:Blank()},update:{'$set'{firstname:Upper(Fname_1.Text),lastname:Upper(Lname_1.Text),DateOfBirth:DOB_1.Text,
-                  passportNumber:Passport_1.Text,emailId:email_1.Text,status:Blank()}}});
+                  MongoDB.UpdateDocument("Sandbox","XYZBank","onboarding",{filter:{applicationNumber:ApplNoLabel_1.Text,
+                  passportNumber:Blank()},update:{'$set':{firstname:Upper(Fname_1.Text),lastname:Upper(Lname_1.Text),
+                  DateOfBirth:DOB_1.Text,passportNumber:Passport_1.Text,emailId:email_1.Text,status:Blank()}}});
 
                   Navigate(Success,ScreenTransition.Fade,{returnAppNumber:ApplNoLabel_1});
                   );
