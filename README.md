@@ -406,7 +406,7 @@
 
 
 
-For any queries, Please contact partners-presales@mongodb.com
+For any queries, Please contact partner-presales@mongodb.com
 
 
 
