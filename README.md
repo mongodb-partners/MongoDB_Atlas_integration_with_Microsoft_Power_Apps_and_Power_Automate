@@ -46,7 +46,7 @@
    
    <img width="600" alt="data api app id" src="https://user-images.githubusercontent.com/101181433/209844947-db763bdf-e7e5-43ac-a9b2-948a325f7d17.png">
 
-  - Copy your Data API App ID from the URL Endpoint as you will need it for Postman. In the above screenshot, data-qdcie is my App ID.
+  - Copy your Data API App ID from the URL Endpoint as you will need it for Postman. In the above screenshot, the masked part is my App ID.
 ### C: Generate an API key
     
    - Switch to the API Keys tab and click Generate API Key.
