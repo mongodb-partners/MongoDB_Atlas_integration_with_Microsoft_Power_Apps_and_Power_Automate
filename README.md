@@ -179,13 +179,13 @@
 
                     If(IsBlank(Fname.Text) Or IsBlank(Lname.Text) Or IsBlank(DOB.Text) Or IsBlank(Passport.Text) 
                     Or IsBlank(email.Text) Or IsEmpty(collectTemp.FN),Set(popup,true),
-                    UpdateContext({_deleteFile:AzureBlobStorage.GetFileMetadataByPathV2("csg10032001f02ad0eb",
+                    UpdateContext({_deleteFile:AzureBlobStorage.GetFileMetadataByPathV2("<your blob storage account name>",
                     Concatenate("documents/",Passport.Text,".pdf")).Id});
                    
                     AzureBlobStorage.CopyFile(Concatenate("documents/",Passport.Text,".pdf"),
                     Concatenate("filestoprocess/",Passport.Text,".pdf"),{overwrite:true});
                     
-                    AzureBlobStorage.DeleteFileV2("csg10032001f02ad0eb",_deleteFile);
+                    AzureBlobStorage.DeleteFileV2("<your blob storage account name>",_deleteFile);
 
                     MongoDB.InsertDocument("Sandbox","XYZBank","onboarding",{document:
                     {firstname:Upper(Fname.Text),lastname:Upper(Lname.Text),DateOfBirth:DOB.Text,
@@ -202,7 +202,7 @@
                   
           - ### Popup Window:
               -  We also need a popup window to stop the user if he is trying to submit without entering all the details.
-              - Click the form(anywere on the screen)-> Under the Advanced-> Action -> OnVisible, Add 
+              - Click the form(anywhere on the screen)-> Under the Advanced-> Action -> OnVisible, Add 
                   
                      Set(popup,false)
                      
@@ -298,11 +298,11 @@
            
                   If(IsBlank(Fname_1.Text) Or IsBlank(Lname_1.Text) Or IsBlank(DOB_1.Text) Or IsBlank(Passport_1.Text) Or IsBlank(email_1.Text) Or                           IsEmpty(collectTemp.FN),
                   Set(popup,true),
-                  UpdateContext({_deleteFile:AzureBlobStorage.GetFileMetadataByPathV2("csg10032001f02ad0eb",
+                  UpdateContext({_deleteFile:AzureBlobStorage.GetFileMetadataByPathV2("<your blob storage account name>",
                   Concatenate("documents/",Passport_1.Text,".pdf")).Id});
 
                   AzureBlobStorage.CopyFile(Concatenate("documents/",Passport_1.Text,".pdf"),Concatenate("filestoprocess/",Passport_1.Text,".pdf"));
-                  AzureBlobStorage.DeleteFileV2("csg10032001f02ad0eb",_deleteFile);
+                  AzureBlobStorage.DeleteFileV2("<your blob storage account name>",_deleteFile);
 
                   MongoDB.UpdateDocument("Sandbox","XYZBank","onboarding",{filter:{applicationNumber:ApplNoLabel_1.Text,
                   passportNumber:Blank()},update:{'$set':{firstname:Upper(Fname_1.Text),lastname:Upper(Lname_1.Text),
