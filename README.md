@@ -313,7 +313,7 @@
 
 
      ### 7. View Submitted Application:    
-     If the application was already submitten, then it should be non editable. 
+     If the application was already submitted, then it should be non editable. 
       
      <img width="300" alt="Already Submiited Form" src="https://user-images.githubusercontent.com/101181433/196111714-33a96843-d23b-408a-b56c-1526733e9f31.png">
          
