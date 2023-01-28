@@ -377,15 +377,18 @@
             <img width="250" alt="Step8" src="https://user-images.githubusercontent.com/101181433/185534838-c1b96dbc-81b7-4eda-bf77-749d8b92bbad.png">
         
         - If Yes/No:
-          - Add an Action → Type Gmail →Send email.
+          - Add an Action → Type outlook.com →Send an email.
           - Add mail content as per your choice:
-          
-            <img width="300" alt="Condition" src="https://user-images.githubusercontent.com/101181433/185534832-46ce904e-10e1-4925-aaab-0ab96a0ac951.png">
+           
+            <img width="300" alt="Screenshot 2023-01-28 at 8 38 27 AM" src="https://user-images.githubusercontent.com/101181433/215239069-3c6bc097-bfe7-4023-8509-55e99358d04b.png">
+            
+            
           
           - The status of the application has to stored back in MongoDB. Under each Action (Yes/No) add a "update document" after the "Send email" Action.For YES status should be "Valid" and for NO status should be "Invalid".
           
-          
-            <img width="300" alt="PAutomate_UpdateStatus" src="https://user-images.githubusercontent.com/101181433/196105022-a73cee64-f9cd-46df-b127-30d5a5d74c54.png">
+
+            <img width="300" alt="Screenshot 2023-01-28 at 8 38 49 AM" src="https://user-images.githubusercontent.com/101181433/215239072-041a4fec-441d-430b-b175-9d8141e962ae.png">
+            
          
         This is the final look of Power Automate Workflow:
         
