@@ -395,19 +395,18 @@
         <img width="250" alt="Final" src="https://user-images.githubusercontent.com/101181433/185534822-c974d9bc-e8e5-453c-a343-a6c5f0721f44.png">
         
 # Execution
-  1. Click on the Application created in Power Apps.
-  2. Enter the User Details in the form.
-  3. Click on Save, wait for the Success Message.
-  4. Click on Submit, It will popup a message saying "Please fill in all details and Upload your passport as a pdf before clicking on Submit". This is because all the fields and the document is a mandatory before the form is submitted.
-  5. Upload the Passport document.Go to Azure Blob Storage, documents container must have the file that is uploaded through the Power Apps.
-  6. Click on Submit, wait for the Success Message.
-  7. Go to the Atlas collection, there should be an entry made with the details entered in the form.
-  8. Go to Azure Blob Storage, filestoprocess container must have the file copied from documents and also the file in documents container would be deleted by now.
-  9. Go to Power Automate, Wait for the trigger to get started.(usually takes 1-2 minutes to start the flow).
-  10. Wait for the flow to complete. If the form details matches with the uploaded document.You should receive a mail saying Validation is Successful. Else you should receive a Validation failure email.
-
-
-
+  1. Click on the “Open New Application”. Enter a few of the User Details in the form. Note the "Application Number" on top right.
+  2. Click on Save, wait for the Success Message. It will add the details entered in the form, as a new document in a new collection “onboarding” under a      new database “XYZBank” in your “Sandbox” cluster.
+  3. Click on the “Retrieve Existing Application”, enter the Application Number from Step 2.
+  4. All saved details will be fetched. Click on Submit without adding any further details. It will popup a message saying "Please fill in all details and     Upload your passport as a pdf before clicking on Submit". This is because all the fields and the document are mandatory before the form is submitted.
+  5. Upload the Passport document in a pdf format. Please note that it may not allow “*.pdf” files to be selected, make sure that options to display “All      files” is selected when browsing your computer for files selection. Go to Azure Blob Storage, “documents” (temporary storage) container must have the      file (as <your passport number>.pdf) that is uploaded through the Power Apps. Click on Submit, wait for the Success Message.
+  6. Go to the Atlas “onboarding” collection, if there are any changes to any of  the text fields then there should be an update made to the document with      the details modified in the form.
+  7. Go to Azure Blob Storage, filestoprocess container must have the file copied from documents container and also the file in the documents container        would be deleted by now.
+  8. Go to Power Automate -> My Flows, Wait for the trigger to start the “Document Validation” flow (usually takes 1-2 minutes to start the flow).
+  9. Click on the flow, you should see the flow status in the run history. Click on the run entry to view the steps and their status.
+     If the form details match with the uploaded document, you should receive a mail  in your email id mentioned in the form, with the subject as        
+     “Welcome to XYZBank”. Else you should receive a “XYZBank - Validation failed”. Please check your Spam folder if you don’t see it in your Inbox.     
+  10. Click on the “Retrieve Existing Application”, enter the Application Number from Step 2 to see a non-editable form which displays the entered details      and the status of the application as Valid or Invalid.Status will be updated in the MongoDB collection also.
 
 For any queries, Please contact partner-presales@mongodb.com
 
