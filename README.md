@@ -306,7 +306,7 @@
 
                   Navigate('Save success_1',ScreenTransition.Fade,{returnAppNumber:ApplNoLabel_1});
 
-     - On Save it should take the user to the Save success1 screen. Create a screen similar to the save success screen created in the "New Application".
+     - On Save it should take the user to the Save success1 screen. Create a screen similar to the [Save Screen](###save-screen) created in the "New Application".
      
      - Click on the Submit Button created→ choose OnSelect Option → Add this function:  
            
