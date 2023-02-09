@@ -140,8 +140,7 @@
             
                   Set(varAzureFile,AzureBlobStorage.CreateFile("documents",
                   Concatenate(Passport.Text,".pdf"),Upload.Media));
-                  Collect(collectTemp,{FN:Upload.FileName,FL:"[Url of your blob storage container 
-                  Eg: https://mystorageaccountname.blob.core.windows.net]" & varAzureFile.Path,FID:varAzureFile.Id});
+                  Collect(collectTemp,{FN:Upload.FileName,FID:varAzureFile.Id});
                     
                  - Filestoprocess →  Folder name in Blob Storage
                  - Concatenate(Passport.Text,".pdf") →  File name( I chose it to be the Passport number entered by the user in the TextInput we created earlier)
