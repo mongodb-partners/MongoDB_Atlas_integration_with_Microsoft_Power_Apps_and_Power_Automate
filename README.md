@@ -306,7 +306,7 @@
 
                   Navigate('Save success_1',ScreenTransition.Fade,{returnAppNumber:ApplNoLabel_1});
 
-     - On Save it should take the user to the Save success1 screen. Create a screen similar to the [Save Screen](#save-screen) created in the "New Application".
+     - On Save it should take the user to the "Save success1" screen. Create a screen similar to the [Save Screen](#save-screen) created in the "New Application".
      
      - Click on the Submit Button created→ choose OnSelect Option → Add this function:  
            
@@ -327,7 +327,7 @@
                   );
 
 
-     - On Submit it should take the user to the Success1 screen. Create a screen similar to the [Success Screen](#success-screen) created in the "New Application".
+     - On Submit it should take the user to the "Success1" screen. Create a screen similar to the [Success Screen](#success-screen) created in the "New Application".
 
      ### 7. View Submitted Application:    
      If the application was already submitted, then it should be non editable. 
