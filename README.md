@@ -287,7 +287,7 @@
      <img width="300" alt="Edit Form" src="https://user-images.githubusercontent.com/101181433/196112230-ab25fa11-467e-4fba-8fb7-f5874a26219d.png">
          
      - Create a New Screen.
-     - Use the similar setup like the New Application. Only changes are with the Save And Submit Button code as these should do a update to the already saved document. Add the Popup window as we did in the New Application.
+     - Use the similar setup like the New Application. Make change to the Save And Submit Button code as these should do a update to the already saved document. Add the Popup window as we did in the New Application.
      - Application number is the number the use enters. We are passing the varFormData collection from the previous page which has all the values retrieved from Database. So for every text Input and the Application Number, Add this under the Default property of the respective fields:
            
                   varFormData.document.firstname
@@ -298,14 +298,16 @@
                   varFormData.document.applicationNumber
                   
      - Click on the Save Button created→ choose OnSelect Option → Add this function:
+     
            
                   MongoDB.UpdateDocument("Sandbox","XYZBank","onboarding",{filter:{applicationNumber:ApplNoLabel_1.Text,
                   passportNumber:Blank()},update:{'$set':{firstname:Upper(Fname_1.Text),lastname:Upper(Lname_1.Text),
                   DateOfBirth:DOB_1.Text,passportNumber:Passport_1.Text,emailId:email_1.Text,status:Blank()}}});
 
-                  Navigate('Save success',ScreenTransition.Fade,{returnAppNumber:ApplNoLabel_1});
+                  Navigate('Save success_1',ScreenTransition.Fade,{returnAppNumber:ApplNoLabel_1});
 
-  
+     - On Save it should take the user to the Save success1 screen. Create a screen similar to the save success screen created in the "New Application".
+     
      - Click on the Submit Button created→ choose OnSelect Option → Add this function:  
            
                   If(IsBlank(Fname_1.Text) Or IsBlank(Lname_1.Text) Or IsBlank(DOB_1.Text) Or IsBlank(Passport_1.Text) Or IsBlank(email_1.Text) Or   
@@ -325,7 +327,7 @@
                   );
 
 
-
+     - On Submit it should take the user to the Success1 screen. Create a screen similar to the Success screen created in the "New Application".
 
      ### 7. View Submitted Application:    
      If the application was already submitted, then it should be non editable. 
