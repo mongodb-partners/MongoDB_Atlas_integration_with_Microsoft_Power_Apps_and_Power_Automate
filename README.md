@@ -327,7 +327,7 @@
                   );
 
 
-     - On Submit it should take the user to the Success1 screen. Create a screen similar to the [Success screen]((#success-screen) created in the "New Application".
+     - On Submit it should take the user to the Success1 screen. Create a screen similar to the [Success Screen](#success-screen) created in the "New Application".
 
      ### 7. View Submitted Application:    
      If the application was already submitted, then it should be non editable. 
