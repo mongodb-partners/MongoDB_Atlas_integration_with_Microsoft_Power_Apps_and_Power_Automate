@@ -166,32 +166,37 @@
             - Click on Insert → Button. Edit the text to “Save”.
             - Click on the Button created→ choose OnSelect Option → Add this function: 
             
-                     MongoDB.InsertDocument("Sandbox","XYZBank","onboarding",{document:
+                     If(IsBlank(Passport.Text),Set(popup_passport,true),
+
+                     MongoDB.InsertDocument("Sandbox","XYZBank","onboarding",{document:                              
                      {firstname:Upper(Fname.Text),lastname:Upper(Lname.Text),DateOfBirth:DOB.Text,
-                     passportNumber:Passport.Text,_id:Passport.Text,emailId:email.Text,applicationNumber:ApplNoLabel}});
-                     
+                     passportNumber:Passport.Text,_id:Passport.Text,
+                     emailId:email.Text,applicationNumber:ApplNoLabel}});
                      Navigate('Save success',ScreenTransition.Fade,{returnAppNumber:ApplNoLabel});
+                     );
 
           - ### Submit Button:
             - Click on Insert → Button. Edit the text to “Submit”.
             - Click on the Button created→ choose OnSelect Option → Add this function: 
 
-                    If(IsBlank(Fname.Text) Or IsBlank(Lname.Text) Or IsBlank(DOB.Text) Or IsBlank(Passport.Text) 
-                    Or IsBlank(email.Text) Or IsEmpty(collectTemp.FN),Set(popup,true),
-                    UpdateContext({_deleteFile:AzureBlobStorage.GetFileMetadataByPathV2("<your blob storage account name>",
-                    Concatenate("documents/",Passport.Text,".pdf")).Id});
-                   
-                    AzureBlobStorage.CopyFile(Concatenate("documents/",Passport.Text,".pdf"),
-                    Concatenate("filestoprocess/",Passport.Text,".pdf"),{overwrite:true});
-                    
-                    AzureBlobStorage.DeleteFileV2("<your blob storage account name>",_deleteFile);
+                    If(IsBlank(Fname.Text) Or IsBlank(Lname.Text) Or IsBlank(DOB.Text) Or IsBlank(Passport.Text) Or IsBlank(email.Text) Or     
+                    IsEmpty(collectTemp.FN),
+                    Set(popup,true),
 
-                    MongoDB.InsertDocument("Sandbox","XYZBank","onboarding",{document:
+
+                    AzureBlobStorage.CopyFile(Concatenate("documents/",Passport.Text,".pdf"),Concatenate("filestoprocess/",Passport.Text,".pdf"), 
+                    {overwrite:true});
+
+                    AzureBlobStorage.DeleteFile(varAzureFile.Id);
+
+                    MongoDB.InsertDocument("Sandbox","XYZBank","onboarding",{document:    
                     {firstname:Upper(Fname.Text),lastname:Upper(Lname.Text),DateOfBirth:DOB.Text,
                     passportNumber:Passport.Text,_id:Passport.Text,emailId:email.Text,applicationNumber:ApplNoLabel.Text}});
 
+
                     Navigate(Success,ScreenTransition.Fade,{returnAppNumber:ApplNoLabel});
                     );
+
 
          - ### Reset Button:
            - Click on Insert → Button. Edit the text to “Submit”.
@@ -203,7 +208,8 @@
               -  We also need a popup window to stop the user if he is trying to submit without entering all the details.
               - Click the form(anywhere on the screen)-> Under the Advanced-> Action -> OnVisible, Add 
                   
-                     Set(popup,false)
+                     Set(popup,false);
+                     Clear(collectTemp);
                      
               - Click on the '+' Button on the left panel. Add a Rectangle. Adjust the size, color, border.
               - Inside the Rectangle add a Label and add the below line under text Property :
