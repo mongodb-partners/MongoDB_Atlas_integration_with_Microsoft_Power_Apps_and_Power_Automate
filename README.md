@@ -301,20 +301,23 @@
   
      - Click on the Submit Button created→ choose OnSelect Option → Add this function:  
            
-                  If(IsBlank(Fname_1.Text) Or IsBlank(Lname_1.Text) Or IsBlank(DOB_1.Text) Or IsBlank(Passport_1.Text) Or IsBlank(email_1.Text) Or                           IsEmpty(collectTemp.FN),
+                  If(IsBlank(Fname_1.Text) Or IsBlank(Lname_1.Text) Or IsBlank(DOB_1.Text) Or IsBlank(Passport_1.Text) Or IsBlank(email_1.Text) Or   
+                  IsEmpty(collectTemp.FN),
                   Set(popup,true),
-                  UpdateContext({_deleteFile:AzureBlobStorage.GetFileMetadataByPathV2("<your blob storage account name>",
-                  Concatenate("documents/",Passport_1.Text,".pdf")).Id});
 
                   AzureBlobStorage.CopyFile(Concatenate("documents/",Passport_1.Text,".pdf"),Concatenate("filestoprocess/",Passport_1.Text,".pdf"));
-                  AzureBlobStorage.DeleteFileV2("<your blob storage account name>",_deleteFile);
 
-                  MongoDB.UpdateDocument("Sandbox","XYZBank","onboarding",{filter:{applicationNumber:ApplNoLabel_1.Text,
-                  passportNumber:Blank()},update:{'$set':{firstname:Upper(Fname_1.Text),lastname:Upper(Lname_1.Text),
-                  DateOfBirth:DOB_1.Text,passportNumber:Passport_1.Text,emailId:email_1.Text,status:Blank()}}});
+                  AzureBlobStorage.DeleteFile(varAzureFileEditForm.Id);
 
-                  Navigate(Success,ScreenTransition.Fade,{returnAppNumber:ApplNoLabel_1});
+                  MongoDB.UpdateDocument("Sandbox","XYZBank","onboarding",{filter:{applicationNumber:ApplNoLabel_1.Text,passportNumber:Blank()},
+                  update:{'$set':{firstname:Upper(Fname_1.Text),lastname:Upper(Lname_1.Text),DateOfBirth:DOB_1.Text,
+                  passportNumber:Passport_1.Text,emailId:email_1.Text,status:Blank()}}});
+
+
+                  Navigate(Success_1,ScreenTransition.Fade,{returnAppNumber:ApplNoLabel_1});
                   );
+
+
 
 
      ### 7. View Submitted Application:    
