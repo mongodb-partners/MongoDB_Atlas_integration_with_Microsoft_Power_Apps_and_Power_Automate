@@ -219,8 +219,8 @@
               
                      Set(popup,false)
                      
-              - Choose these 3(Rectangle+Label+Button) on the left panel, right click and group them
-              - Similarly create another popup window to ensure user enters passport number before the first save. This would be necessary for the MongoDB insert and also as a filename for the passport pdf file uploaded.The message for Label text property will be 
+              - Choose these 3(Rectangle+Label+Button) on the left panel, right click and group them. Click on the top container which got created ->Visible property-> add the text "popup".
+              - Similarly create another popup window to ensure user enters passport number before the first save. This would be necessary for the MongoDB insert and also as a filename for the passport pdf file uploaded. Click on this top container which got created ->Visible property-> add the text "popup_passport".The message for Label text property will be 
                     
                     "Please enter the passport number before clicking on Save" 
                 
