@@ -71,6 +71,10 @@
 
 
   - Change the name of the connector as per your choice
+  - Check the “Host” in the “General” tab. It should be the first part of the URL endpoint (after https:// and before the next “/”) of the Data API set in [Enable the Data API in Atlas](#b-enable-the-data-api-in-atlas). If its not “data.mongodb-api.com”, then change the Host with the first part of the URl endpoint. Update the “Base url” with the remaining part of the URL endpoint.
+  
+![Power Apps Baseurl screenshot](https://user-images.githubusercontent.com/104025201/228638654-e426e302-0a23-4f28-a65d-7af80d8d2074.png)
+
   - Toggle the “Swagger Editor” button which will show the swagger code for the connector. Replace the swagger file content with the MongoDBDataAPI.swagger.
       
    - Update the connector.
